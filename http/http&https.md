@@ -23,7 +23,7 @@
 * http vs https
    * 1. https协议需要申请到ca证书或者自制证书
    * 2. http是明文传输，https是具有安全性的ssl加密
-   * 3. http是直接与tpc进行数据传输，https是经过一层ssl(osi表示层)，而且http的端口是80(需要国内备案)，htps的是443
+   * 3. http是直接与tcp进行数据传输，https是经过一层ssl(osi表示层)，而且http的端口是80(需要国内备案)，htps的是443
    * 4. http的链接没有状态，https是有http+ssl构建的可进行加密传输、身份认证的网络协议，要比http安全
 
 * HTTPS一般使用的加密与HASH算法如下：
