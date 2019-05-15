@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  <script>
+  <!-- <script>
     setTimeout(function(){
       console.log('1');
       new Promise(function(resolve){
@@ -36,6 +36,79 @@
       console.log('8');
     }); 		
     console.log('4');
+  </script> -->
+  <script>
+    function handle (v1, v2, type) {
+      var m1 = 0;
+      var m2 = 0;
+      var s1 = v1.toString()
+      var s2 = v2.toString()
+      if (s1.indexOf('.') !== -1) {
+        m1 += s1.split('.')[1].length;
+      }
+      if (s2.includes('.')) {
+        m2 += s2.split('.')[1].length;
+      }
+      var mmax = Math.max(m1, m2)
+      
+      var int1 = s1 * Math.pow(10, mmax)
+      var int2 = s2 * Math.pow(10, mmax)
+      var int3 = Number(s1.replace('.', ''))
+      var int4 = Number(s2.replace('.', ''))
+      console.log(m1, m2, mmax, int3, int4)
+      switch (type) {
+        case 'add':
+          return (int1 + int2)/ Math.pow(10, mmax)
+        case 'minus':
+          return (int1 - int2)/Math.pow(10, mmax)
+        case 'multiply':
+          return (int3*int4)/Math.pow(10, m1+m2)
+        case 'divide':
+          return (int3/int4)/Math.pow(10, mmax)
+      }
+      
+    }
+    var b = handle(0.14, 100, 'divide')
+    console.log(b)
   </script>
+  <script>
+    var f = new Function()
+    var f = function () {
+      console.log(2)
+    }
+    // 函数声明优先级高于变量声明，变量提升，变量声明在后，以最后声明的值为结果
+    function f () {
+      console.log(1)
+    }
+    // var a = f()
+    // console.log(a)
+    var b = function fun(){
+      console.log(fun)
+    }
+    // b()
+    // 函数表达式是如果有函数名,它的函数名也只存在于自身的作用域，避免全局污染，方便递归
+    // fun()// fun is not defined
+
+    function Foo() {
+      getName = function () { console.log (1); };
+      return this;
+    }
+    Foo.getName = function () { console.log (2);};
+    Foo.prototype.getName = function () { console.log (3);};
+    var getName = function () { console.log (4);};
+    function getName() { console.log (5);}
+
+    Foo.getName();//2  直接访问Foo上存储的的静态属性
+    getName();//4  访问当前上下文作用域的getName函数，由于变量声明（声明变量和声明函数）提升
+    Foo().getName();//1 先执行Foo()函数，第一句是给getName赋值，因为没有var声明，会一层层的网上找，直到找到外面的getName（输出4的这个），然后给这个值赋值，输出1
+    
+    getName();//1 // 实际上上一步已经把getname函数给改了
+    window.getName() // 1
+    new Foo.getName();//2 运算符优先级问题 相当于 new (Foo.getName)()
+    new Foo().getName();//3  (new Foo()).getName()
+    new new Foo().getName();//3 new ((new Foo()).getName)()
+  </script>
+  <!-- <script src="./recursion.js"></script> -->
+  <script src="./sort.js"></script>
 </body>
 </html>
