@@ -35,3 +35,4 @@
 * tcp缓冲
 
 ####跨域  https://segmentfault.com/a/1190000015597029
+#### http://www.ruanyifeng.com/blog/2016/04/cors.html
