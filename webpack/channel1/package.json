@@ -11,10 +11,6 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "build:cl": "rm -rf dist && npm run build"
   },
-  "dependencies": {
-    "@wag/fe-dialog": "^2.0.1",
-    "@wag/fe-toast": "0.0.6"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
